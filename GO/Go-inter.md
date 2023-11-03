@@ -3,8 +3,8 @@
 A fibonacci with modulo sequence is defined for a given modulo,
 mod, as follows:
 
-	• fib[xJ = (fib[x - 1] + fib[x - 2)) % mod, x > 2  
-	• fib[1] = 1, fib[2) = 2
+    • fib[xJ = (fib[x - 1] + fib[x - 2)) % mod, x > 2
+    • fib[1] = 1, fib[2) = 2
 
 [1, 2, 3, 5, 8, 13, 21 ...J are the first few terms of the Fibonacci
 sequence. In this task, you are required to write a function that runs
@@ -32,12 +32,12 @@ below. The function will return nothing as all its results will be
 returned through a channel.
 
 Modu/oFibonacciSequence has the following parameter(s):
-	requestChan: a channel of booleans (chan bool)
-	resultChan: a channel of integers (chan int)
+requestChan: a channel of booleans (chan bool)
+resultChan: a channel of integers (chan int)
 
 Constraints
-	• 0 s skips 100
-	• 1 s totals 200
+• 0 s skips 100
+• 1 s totals 200
 
 Input Format For Custom Testing
 
@@ -49,9 +49,9 @@ The second line contains an integer, total, the number of elements that should b
 
 Sample Case O
 Sample Input For Custom Testing
-STDIN   Function
-0       skip = 0
-6       total = 6
+STDIN Function
+0 skip = 0
+6 total = 6
 
 Sample Output
 1
@@ -78,6 +78,7 @@ Sample Output
 Explanation
 Skip the first 50 numbers in the sequence and print the modulo of the next 4 integers.
 
+```go
 package main
 
 import (
@@ -170,46 +171,45 @@ func checkError(err error) {
         panic(err)
     }
 }
-
+```
 
 2. Go: HTTP server
 
 Implement an HTTP server that has three routes and maintains a
 database of the world's largest lakes.
-	• The first route runs a handler postHand/erwhich accepts a POST request with JSON-encoded lake information and posts it to the database.
+• The first route runs a handler postHand/erwhich accepts a POST request with JSON-encoded lake information and posts it to the database.
 
-	{
-		"type": "post" ,
-		"payload": { "id": "id00", "name": "Name of the lake", "area": 452001}
-	}
+    {
+    	"type": "post" ,
+    	"payload": { "id": "id00", "name": "Name of the lake", "area": 452001}
+    }
 
-	• The second route runs a handler deleteHand/erwhich deletes the lake from the database by id. If the payload id is not present in the data set, the server returns a 404 response.
-	{
-		"type": "delete" ,
-		"payload ": "id00"
-	}
-	• The third route runs a handler getHandlerwhich takes a lake from the database by id and returns it to the caller which prints the name and the area of the lake. If the id is not found in the database, the server returns a string message "404 Not Found". Otherwise, it returns the payload object corresponding to the id.
-	{
-		"type": "get
-		"payload : "id00"
-	}
+    • The second route runs a handler deleteHand/erwhich deletes the lake from the database by id. If the payload id is not present in the data set, the server returns a 404 response.
+    {
+    	"type": "delete" ,
+    	"payload ": "id00"
+    }
+    • The third route runs a handler getHandlerwhich takes a lake from the database by id and returns it to the caller which prints the name and the area of the lake. If the id is not found in the database, the server returns a string message "404 Not Found". Otherwise, it returns the payload object corresponding to the id.
+    {
+    	"type": "get
+    	"payload : "id00"
+    }
 
 Implement the server which will be queried by the program and
 print the output to STDOUT.
 
 Note:
 The program uses these structs:
-	type Lake struct {
-		Name string
-		Area int32
-	}
+type Lake struct {
+Name string
+Area int32
+}
 
+    type Action struct {
+    	Type string
+    	Payload string
+    }
 
-	type Action struct {
-		Type string
-		Payload string
-	}
-	
 The base URL is contained in the global variable address. Data is stored under the store variable which is the map[string] Lake.
 
 Constraints
@@ -260,31 +260,30 @@ and the 5th actions get items from the store by corresponding ids, but since the
 package main
 
 import (
-    "bufio"
-    "encoding/json"
-    "fmt"
-    "io"
-    "net/http"
-    "os"
-    "strconv"
-    "strings"
-    "time"
+"bufio"
+"encoding/json"
+"fmt"
+"io"
+"net/http"
+"os"
+"strconv"
+"strings"
+"time"
 )
 
+/\*
 
+- Complete the 'postHandler', 'deleteHandler' and 'getHandler' functions below.
+-
+- All functions are expected to be void.
+- All functions accept http.ResponseWriter w and _http.Request req as parameters.
+  _/
 
-/*
- * Complete the 'postHandler', 'deleteHandler' and 'getHandler' functions below.
- *
- * All functions are expected to be void.
- * All functions accept http.ResponseWriter w and *http.Request req as parameters.
- */
-
-func postHandler(w http.ResponseWriter, req *http.Request) {
-    if req.Method != http.MethodPost {
-        http.Error(w, "Method is not supported.", http.StatusNotFound)
-        return
-    }
+func postHandler(w http.ResponseWriter, req \*http.Request) {
+if req.Method != http.MethodPost {
+http.Error(w, "Method is not supported.", http.StatusNotFound)
+return
+}
 
     var lake Lake
     err := json.NewDecoder(req.Body).Decode(&lake)
@@ -295,13 +294,14 @@ func postHandler(w http.ResponseWriter, req *http.Request) {
 
     store[lake.Id] = lake
     w.WriteHeader(http.StatusOK)
+
 }
 
-func deleteHandler(w http.ResponseWriter, req *http.Request) {
-    if req.Method != http.MethodDelete {
-        http.Error(w, "Method is not supported.", http.StatusNotFound)
-        return
-    }
+func deleteHandler(w http.ResponseWriter, req \*http.Request) {
+if req.Method != http.MethodDelete {
+http.Error(w, "Method is not supported.", http.StatusNotFound)
+return
+}
 
     id := req.URL.Query().Get("id")
     if id == "" {
@@ -316,13 +316,14 @@ func deleteHandler(w http.ResponseWriter, req *http.Request) {
 
     delete(store, id)
     w.WriteHeader(http.StatusOK)
+
 }
 
-func getHandler(w http.ResponseWriter, req *http.Request) {
-    if req.Method != http.MethodGet {
-        http.Error(w, "Method is not supported.", http.StatusNotFound)
-        return
-    }
+func getHandler(w http.ResponseWriter, req \*http.Request) {
+if req.Method != http.MethodGet {
+http.Error(w, "Method is not supported.", http.StatusNotFound)
+return
+}
 
     id := req.URL.Query().Get("id")
     if id == "" {
@@ -338,10 +339,11 @@ func getHandler(w http.ResponseWriter, req *http.Request) {
 
     w.Header().Set("Content-Type", "application/json")
     json.NewEncoder(w).Encode(lake)
+
 }
 
 func main() {
-    reader := bufio.NewReaderSize(os.Stdin, 16 * 1024 * 1024)
+reader := bufio.NewReaderSize(os.Stdin, 16 _ 1024 _ 1024)
 
     stdout, err := os.Create(os.Getenv("OUTPUT_PATH"))
     checkError(err)
@@ -352,7 +354,7 @@ func main() {
 
     actionsCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
     checkError(err)
-    
+
     http.HandleFunc("/get", getHandler)
     http.HandleFunc("/post", postHandler)
     http.HandleFunc("/delete", deleteHandler)
@@ -365,7 +367,7 @@ func main() {
         actionsItem := readLine(reader)
         actions = append(actions, actionsItem)
     }
-    
+
     for _, actionStr := range actions {
         var action Action
         err := json.Unmarshal([]byte(actionStr), &action)
@@ -402,46 +404,43 @@ func main() {
     fmt.Fprintf(writer, "\n")
 
     writer.Flush()
+
 }
 
 const portSuffix = ":3333"
 var address = "http://127.0.0.1" + portSuffix
 
 type Lake struct {
-    Id   string `json:"id"`
-    Name string `json:"name"`
-    Area int32  `json:"area"`
+Id string `json:"id"`
+Name string `json:"name"`
+Area int32 `json:"area"`
 }
 
 type Action struct {
-    Type    string
-    Payload string
+Type string
+Payload string
 }
 
 var store = map[string]Lake{}
 
-func readLine(reader *bufio.Reader) string {
-    str, _, err := reader.ReadLine()
-    if err == io.EOF {
-        return ""
-    }
+func readLine(reader \*bufio.Reader) string {
+str, \_, err := reader.ReadLine()
+if err == io.EOF {
+return ""
+}
 
     return strings.TrimRight(string(str), "\r\n")
+
 }
 
 func checkError(err error) {
-    if err != nil {
-        panic(err)
-    }
+if err != nil {
+panic(err)
+}
 }
 
-
 3. Go: Custom String Sorting
-Sort a set of strings based on the following factors:
-	1. An odd length string should precede an even length string.
-	2. If both strings have odd lengths, the shorter of the two should precede.
-	3. If both strings have even lengths, the longer of the two should precede.
-	4. If the two strings have equal lengths, they should be in alphabetical order.
+   Sort a set of strings based on the following factors: 1. An odd length string should precede an even length string. 2. If both strings have odd lengths, the shorter of the two should precede. 3. If both strings have even lengths, the longer of the two should precede. 4. If the two strings have equal lengths, they should be in alphabetical order.
 
 Example
 strArr 'ab', 'abcde', 'a', 'abcd']
@@ -454,10 +453,10 @@ Function Description
 Complete the function customSortingin the editor below.
 
 customSorting has the following parameter:
-	string strArr[nj: an array of strings
+string strArr[nj: an array of strings
 
 Returns
-	string[n]: the sorted array
+string[n]: the sorted array
 
 Constraints
 • 1 <= length of strArrs <=1000
@@ -471,9 +470,9 @@ Each line i of the n subsequent lines (where Osi < n) contains a
 string describing strArr[i].
 Sample Case O
 Sample Input For Custom Testing
-STDIN    Function
-5     ->  strArr[] size n =5
-abc   ->  strArr = ['abc', 'ab', 'abcde', 'a','abcs']
+STDIN Function
+5 -> strArr[] size n =5
+abc -> strArr = ['abc', 'ab', 'abcde', 'a','abcs']
 
 ab
 abcde
@@ -490,7 +489,6 @@ ab
 Explanation
 The odd length strings come first, sorted ascending by length.
 Even length words come last in descending length order.
-
 
 Sample Case 1
 SSample'npGt For Custom Testing
@@ -520,6 +518,7 @@ Even length words come last in descending length order. Multiple
 words have similar lengths and they are. sorted alphabetically,
 'Jupiter' 'Mercury' and 'Neptune' for example.
 
+```go
 package main
 
 import (
@@ -632,3 +631,5 @@ func checkError(err error) {
         panic(err)
     }
 }
+
+```
