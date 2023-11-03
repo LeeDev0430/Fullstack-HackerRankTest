@@ -1,6 +1,6 @@
 1. Go: Remainder Sorting
-Implement a function that receives an array of strings and sorts
-them based on the following heuristics:
+   Implement a function that receives an array of strings and sorts
+   them based on the following heuristics:
 
 • The primary sort is by increasing remainder of the strings' lengths,
 modulo 3.
@@ -33,9 +33,9 @@ string describing
 
 Sample Case O
 Sample Input For Custom Testing
-STDIN   Function
-4   ->  strArr[] size n = 4
-a   ->  strArr = [ 'a', 'ab,', 'bc', 'abc']
+STDIN Function
+4 -> strArr[] size n = 4
+a -> strArr = [ 'a', 'ab,', 'bc', 'abc']
 ab
 bc
 abc
@@ -46,11 +46,10 @@ a
 ab
 bc
 
-
 Sample Case 1
 Sample Input For Custom Testing
-STDIN     Function
-6     ->   strArr[] size n =  6
+STDIN Function
+6 -> strArr[] size n = 6
 Colorado -> strArr = ['Colorado', 'Utah' ,'Wisconsin', 'Oregon' ,'Maine']
 Utah
 Montana
@@ -71,7 +70,7 @@ The following sorted array is in the form (string, length, length
 modulo 3): [('Oregon', 6, 0), ('Wisconsin', 9, 0), ('Montana', 7, 1),
 ('Utah', 4, 1), ('Colorado', 8, 2), ('Maine', 5, 2)).
 
-
+```GO
 package main
 
 import (
@@ -154,7 +153,7 @@ func checkError(err error) {
         panic(err)
     }
 }
-
+```
 
 2. Go: String Operations
 
@@ -179,10 +178,10 @@ Function Description
 Complete the function ModifyString in the editor below.
 
 ModifyString has the following parameter(s):
-	str: a string
+str: a string
 
 Returns:
-	string: the processed string
+string: the processed string
 
 Constraints
 • 1 s length ofstrs310
@@ -193,9 +192,9 @@ The only line contains a string, str.
 Sample Case O
 
 Sample Input For Custom Testing
-	011123eH56
+011123eH56
 Sample Output
-	Hello
+Hello
 
 Explanation
 Strip the leading and trailing spaces, remove digits and reverse
@@ -203,15 +202,15 @@ the string.
 
 Sample Case 1
 Sample Input For Custom Testing
-	another
+another
 Sample Output
-	rehtona
+rehtona
 
 Explanation
 There are no digits, so we just remove trailing spaces and reverse
 the string
 
-
+```go
 package main
 
 import (
@@ -295,3 +294,4 @@ func checkError(err error) {
         panic(err)
     }
 }
+```
