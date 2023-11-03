@@ -1,0 +1,323 @@
+8. CSS vertical-align
+Which of the following are true about the CSS property 'vertical-align'?
+<p>
+<span class="heroWord">Hack</span>
+ <img src=""/>
+</p>
+Pick ONE OR MORE options
+
+.heroWord { vertical-align: 25px; } moves the word "Hack" to the bottom, 25px lower than the <p> tag.
+
+.heroWord { vertical-align: 25px; } moves the word "Hack" to the top, 25px higher than the <p> tag.
+
+p img { vertical-align: text-bottom; } moves the image to the bottom with respect to the <p> tag.
+
+p img { vertical-align: text-bottom; } has no effect on the <img> tag.
+
+ChatGPT
+The vertical-align property in CSS is used to set the vertical alignment of an inline, inline-block, or table-cell box. Its effect depends on the element's display type and the value specified. Let's evaluate the provided options:
+
+.heroWord { vertical-align: 25px; } moves the word "Hack" to the bottom, 25px lower than the <p> tag.
+
+False. The vertical-align property does not accept pixel values in the way implied here. It cannot move an inline element a specific number of pixels away from its current position. Instead, it aligns the element relative to the current line.
+.heroWord { vertical-align: 25px; } moves the word "Hack" to the top, 25px higher than the <p> tag.
+
+False. As mentioned above, pixel values do not directly translate to vertical displacement in the way this option suggests.
+p img { vertical-align: text-bottom; } moves the image to the bottom with respect to the <p> tag.
+
+Potentially True. The value text-bottom aligns the bottom of the image with the bottom of the text in the <p> tag. It does not necessarily align it with the bottom of the <p> tag itself, but with the baseline of the parent element's text. If "bottom" is interpreted as "the baseline of the text", this statement can be considered true.
+p img { vertical-align: text-bottom; } has no effect on the <img> tag.
+
+False. The vertical-align property does affect inline elements like <img>, and setting it to text-bottom will change the image's alignment relative to the text's baseline.
+The accurate option, based on a typical understanding of how vertical-align works, would be the third one. However, please note that the description is slightly imprecise—it should say that it moves the image to align with the bottom of the text, not necessarily to the bottom of the <p> tag itself.
+
+
+
+
+User
+1. CSS Animation
+Which of the following would create the below animation? Moving the mouse over the div should double its size, and the animation should happen over 500ms.
+<Style>
+div {
+height: 50px;
+width: 50px;
+background: #3ba59b;
+border-radius: 50%;}
+</style>
+<div class="greyBall"></div>
+
+Pick ONE OR MORE options
+
+.greyBall:hover { transform: scale(2); animate: 500ms; }
+
+.greyBall:hover { transform: scale(2); transition: 500ms transform; }
+
+.greyBall:hover { transform: scale(2); transition: 0.5s; }
+
+.greyBall:focus { transform: scale(2); animate: 0.5s; }
+ChatGPT
+To achieve the described animation effect, you need to use the transform property to scale the element and the transition property to define the duration and property the transition should apply to. Here's what each option given would do:
+
+.greyBall:hover { transform: scale(2); animate: 500ms; }
+
+Incorrect. The property animate does not exist in CSS; it's likely a confusion with animation which is not the correct property to use for this effect.
+.greyBall:hover { transform: scale(2); transition: 500ms transform; }
+
+Correct. This rule scales the .greyBall to twice its size when hovered and applies a transition over 500 milliseconds specifically to the transform property.
+.greyBall:hover { transform: scale(2); transition: 0.5s; }
+
+Correct. This rule also correctly applies the scaling transformation and defines the transition over 0.5 seconds, which is equivalent to 500ms. It applies the transition to all animatable properties by default.
+.greyBall:focus { transform: scale(2); animate: 0.5s; }
+
+Incorrect. The focus pseudo-class is not related to mouse hover actions, and again, animate is not a proper CSS property. This would not produce the desired effect.
+So, the correct options for creating the described hover effect would be:
+
+.greyBall:hover { transform: scale(2); transition: 500ms transform; }
+.greyBall:hover { transform: scale(2); transition: 0.5s; }
+
+
+
+User
+2. CSS object-fit
+Which of the following are true about the CSS property 'object-fit'?
+Pick ONE OR MORE options
+
+'object-fit: contain;' does not preserve the aspect ratio of the image; it stretches the image to cover the entire width and height of the container.
+
+'object-fit: contain;' preserves the aspect ratio of the image and makes sure no clipping happens to the whole image.
+
+'object-fit: cover;' avoids the image getting squeezed, but it could end up clipping the image.
+
+'object-fit: cover;' avoids clipping the image by sacrificing the aspect ratio.
+ChatGPT
+The object-fit property in CSS specifies how the contents of a replaced element (like an img or video) should be resized to fit its container. Here are the correct explanations for each object-fit value given in the options:
+
+'object-fit: contain;' does not preserve the aspect ratio of the image; it stretches the image to cover the entire width and height of the container.
+
+False. The contain value does preserve the aspect ratio of the image. It scales the content to be as large as possible without stretching and without clipping. It will be letterboxed within the element's box.
+'object-fit: contain;' preserves the aspect ratio of the image and makes sure no clipping happens to the whole image.
+
+True. This is the correct definition of object-fit: contain. It ensures that the entire image fits within the bounds of its container while preserving its intrinsic aspect ratio.
+'object-fit: cover;' avoids the image getting squeezed, but it could end up clipping the image.
+
+True. The cover value ensures that the content fully covers the area of the container, which could result in parts of the content being clipped if the aspect ratios of the content and the container do not match.
+'object-fit: cover;' avoids clipping the image by sacrificing the aspect ratio.
+
+False. This is incorrect. The cover value does not sacrifice the aspect ratio; it maintains the aspect ratio, but clips the image if necessary to cover the container fully.
+So, the correct statements regarding the object-fit property are:
+
+'object-fit: contain;' preserves the aspect ratio of the image and makes sure no clipping happens to the whole image.
+'object-fit: cover;' avoids the image getting squeezed, but it could end up clipping the image.
+
+
+
+User
+3. CSS Ellipsis
+If an element extends beyond the allocated width, how do you truncate the sentence with an ellipsis (...) using CSS?
+For example, "Hello! I am an element, and my width is larger than the container..."
+Pick ONE OR MORE options
+
+{ white-space: pre-wrap; overflow: ellipsis; }
+
+{ text-overflow: ellipsis; white-space: wrap; visibility: hidden; }
+
+{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+None of the above
+ChatGPT
+To truncate text with an ellipsis in CSS when the content overflows its container, you should use the text-overflow, overflow, and white-space properties together. Here's what each of the options would do:
+
+{ white-space: pre-wrap; overflow: ellipsis; }
+
+Incorrect. The overflow property does not accept ellipsis as a value. overflow can be visible, hidden, scroll, or auto.
+{ text-overflow: ellipsis; white-space: wrap; visibility: hidden; }
+
+Incorrect. white-space: wrap; is not a valid value for white-space. The visibility: hidden; would also hide the entire element, not just the overflow.
+{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+Correct. This is the proper combination to add an ellipsis to truncated text. white-space: nowrap; prevents the text from wrapping to a new line, overflow: hidden; hides any overflow that does not fit in the block, and text-overflow: ellipsis; adds the ellipsis to any text that is cut off.
+None of the above
+
+This option would be incorrect because the third option provides a correct solution.
+So, the correct answer to truncate a sentence with an ellipsis using CSS is:
+
+{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+
+
+User
+4. CSS Text Coloring
+Which of the following renders the text red?
+id="tagld">Please color me red</p>
+Pick ONE OR MORE options
+
+:root { --text-color: red; } p { color: --text-color; }
+
+:root { --text-color: red; } p { color: var(--text-color); }
+
+#tagId { color: red; } p { color: blue; }
+
+p { color: red !important; } #tagId { color: blue; }
+ChatGPT
+Let's analyze each of the given options:
+
+:root { --text-color: red; } p { color: --text-color; }
+
+Incorrect. While it correctly sets a CSS variable --text-color to red, the usage of the variable in p { color: --text-color; } is incorrect. It should be used with var(), like var(--text-color).
+:root { --text-color: red; } p { color: var(--text-color); }
+
+Correct. This sets a custom property --text-color to red in the :root selector (which is effectively the HTML document) and then correctly applies it to all <p> tags using the var() function.
+#tagId { color: red; } p { color: blue; }
+
+Incorrect. There seems to be a typo in the id selector. Assuming the HTML is <p id="tagId">Please color me red</p>, the correct CSS would be #tagId { color: red; } without p since #tagId is an ID selector, not a tag selector. As written, it doesn't target the element with id="tagId" correctly. The p { color: blue; } would turn all <p> text blue, but #tagId is supposed to take precedence due to higher specificity — however, due to the typo, it wouldn’t apply at all.
+p { color: red !important; } #tagId { color: blue; }
+
+Correct. The use of !important will ensure that all <p> tags are colored red, even if other styles try to override it. Although #tagId { color: blue; } is an attempt to change the color to blue, it will be overridden by the !important rule applied to all <p> tags.
+In summary, the following options will render the text red:
+
+:root { --text-color: red; } p { color: var(--text-color); }
+p { color: red !important; } #tagId { color: blue; }
+However, the use of !important should generally be avoided if possible because it makes debugging and maintaining CSS more difficult due to its overriding nature. The cleaner solution for maintainability is the second option, using CSS variables correctly.
+
+
+
+
+User
+•—5:CSSSe1ectio
+How do you prevent the user from selecting the text rendered inside the following element?
+should not be selectable</p>
+Pick ONE OR MORE options
+
+p { cursor-event: none; }
+
+p { pointer-events: none; }
+
+p { user-select: none; }
+
+None of the above
+ChatGPT
+To prevent the user from selecting text within an element, you can use the user-select CSS property. Here's what each option does:
+
+p { cursor-event: none; }
+
+Incorrect. There is no cursor-event property in CSS.
+p { pointer-events: none; }
+
+Incorrect. While this will make the element not react to pointer events (like clicking), it does not prevent text selection. Text can still be selected using keyboard shortcuts.
+p { user-select: none; }
+
+Correct. This property is used to prevent the user from selecting text. It is the right choice for making text inside a <p> element unselectable.
+None of the above
+
+This would be incorrect since the third option provides a correct solution.
+So the correct answer is:
+
+p { user-select: none; }
+
+
+
+User
+6. CSS Input Placeholder
+How do you hide the "placeholder" text of an <input> field?
+Pick ONE OR MORE options
+
+input::placeholder { visibility: clip; }
+
+input::placeholder { color: transparent; }
+
+input::placeholder { display: none; }
+
+input::placeholder { visibility: hidden; }
+ChatGPT
+To hide the placeholder text of an input field, you can change its color to transparent, so it's not visible to the user. Here's what each provided option would do:
+
+input::placeholder { visibility: clip; }
+
+Incorrect. The visibility property does not accept clip as a value. The valid values for visibility are visible, hidden, collapse, and inherit.
+input::placeholder { color: transparent; }
+
+Correct. This would make the placeholder text color transparent, effectively hiding it from view while still retaining its space in the layout.
+input::placeholder { display: none; }
+
+Incorrect. The display property does not work on pseudo-elements like ::placeholder.
+input::placeholder { visibility: hidden; }
+
+Incorrect. While visibility: hidden; will hide an element, it does not work on the ::placeholder pseudo-element. The placeholder will still take up space, and this property is not the correct way to hide placeholder text.
+So the correct answer for hiding the placeholder text is:
+
+input::placeholder { color: transparent; }
+
+
+
+User
+7. CSS Centering
+Which of the following options can position the div with the class name "child" exactly at the center of the page?
+<div class="parent" style="width: 100vw; height: 100vh;">
+<div style=" height: 100px; width: 100px; background: black"></div>
+</div>
+Pick ONE OR MORE options
+
+.parent { display: flex; justify-content: center; align-items: center; }
+
+.parent { display: flex; justify-content: center; align-self: center; }
+
+.parent { position: relative;} .child { position: absolute; top: 50%; left: 50%; }
+
+.parent { position: relative;} .child { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+ChatGPT
+To position a div with the class "child" at the center of the page, we can use CSS centering techniques such as Flexbox or Absolute Positioning combined with the CSS transform property. Let's review each option:
+
+.parent { display: flex; justify-content: center; align-items: center; }
+
+Correct. This will center the .child element both horizontally and vertically within the .parent element using Flexbox, as long as the child element has the class "child" applied to it (which is missing in the HTML provided).
+.parent { display: flex; justify-content: center; align-self: center; }
+
+Incorrect. The align-self property applies to flex items individually and would center the child element vertically only if the align-self property is applied to the .child class, not the .parent.
+.parent { position: relative; } .child { position: absolute; top: 50%; left: 50%; }
+
+Incorrect as given. This would position the top-left corner of the .child element at the center of the .parent, but the .child would not be centered perfectly. The .child div would need to be shifted back by half its own width and height to be perfectly centered.
+.parent { position: relative; } .child { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+Correct. This will center the .child element both horizontally and vertically within the .parent element using Absolute Positioning along with the CSS transform property to adjust for the .child element's own dimensions.
+However, it's important to note that the HTML provided in the question does not include a div with the class "child". Assuming that the inner div should have the class "child" (which should be added for these styles to apply), the correct options to center that div exactly would be:
+
+.parent { display: flex; justify-content: center; align-items: center; } (assuming the child div has the "child" class)
+.parent { position: relative; } .child { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); } (assuming the child div has the "child" class)
+
+
+
+User
+8. CSS vertical-align
+Which of the following are true about the CSS property 'vertical-align'?
+<p>
+<span class="heroWord">Hack</span>
+<img src=""/>
+</p>
+Pick ONE OR MORE options
+
+.heroWord { vertical-align: 25px; } moves the word "Hack" to the bottom, 25px lower than the <p> tag.
+
+.heroWord { vertical-align: 25px; } moves the word "Hack" to the top, 25px higher than the <p> tag.
+
+p img { vertical-align: text-bottom; } moves the image to the bottom with respect to the <p> tag.
+
+p img { vertical-align: text-bottom; } has no effect on the <img> tag.
+ChatGPT
+The CSS vertical-align property is used to align inline, inline-block, and table-cell elements vertically within their containing line box or table cell. It does not accept length values like pixels (e.g., 25px); instead, it uses values like top, middle, bottom, text-top, text-bottom, etc., to align elements relative to the tallest element on the line or to certain parts of the font. Given this understanding, let's analyze the options:
+
+.heroWord { vertical-align: 25px; } moves the word "Hack" to the bottom, 25px lower than the <p> tag.
+
+Incorrect. As mentioned, vertical-align does not accept pixel values. So, 25px is not a valid value for the vertical-align property.
+.heroWord { vertical-align: 25px; } moves the word "Hack" to the top, 25px higher than the <p> tag.
+
+Incorrect. Again, vertical-align does not accept pixel values, making this statement false.
+p img { vertical-align: text-bottom; } moves the image to the bottom with respect to the <p> tag.
+
+Potentially Correct. The vertical-align: text-bottom; will align the bottom of the image with the bottom of the text of the parent <p> element. This description may be somewhat misleading, though, as it suggests a relative alignment to the <p> tag itself, but text-bottom actually refers to the baseline of the parent element's text.
+p img { vertical-align: text-bottom; } has no effect on the <img> tag.
+
+Incorrect. The vertical-align property certainly does affect inline elements like <img>, and text-bottom would align the image relative to the baseline of the text as mentioned above.
+Therefore, the correct option, based on the standard behavior of the vertical-align property, is:
+
+p img { vertical-align: text-bottom; } moves the image to the bottom with respect to the <p> tag.
+Please note that for this to be true, the image must be an inline element, as vertical-align does not apply to block-level elements.
